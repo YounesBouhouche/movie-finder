@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShowsRouteImport } from './routes/shows'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$splat'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TvTvIdRouteImport } from './routes/tv.$tvId'
 import { Route as MovieMovieIdRouteImport } from './routes/movie.$movieId'
 
+const ShowsRoute = ShowsRouteImport.update({
+  id: '/shows',
+  path: '/shows',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$splat': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/shows': typeof ShowsRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
   '/tv/$tvId': typeof TvTvIdRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$splat': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/shows': typeof ShowsRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
   '/tv/$tvId': typeof TvTvIdRoute
 }
@@ -60,27 +68,49 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$splat': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/shows': typeof ShowsRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
   '/tv/$tvId': typeof TvTvIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$splat' | '/about' | '/movie/$movieId' | '/tv/$tvId'
+  fullPaths:
+    | '/'
+    | '/$splat'
+    | '/about'
+    | '/shows'
+    | '/movie/$movieId'
+    | '/tv/$tvId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$splat' | '/about' | '/movie/$movieId' | '/tv/$tvId'
-  id: '__root__' | '/' | '/$splat' | '/about' | '/movie/$movieId' | '/tv/$tvId'
+  to: '/' | '/$splat' | '/about' | '/shows' | '/movie/$movieId' | '/tv/$tvId'
+  id:
+    | '__root__'
+    | '/'
+    | '/$splat'
+    | '/about'
+    | '/shows'
+    | '/movie/$movieId'
+    | '/tv/$tvId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
+  ShowsRoute: typeof ShowsRoute
   MovieMovieIdRoute: typeof MovieMovieIdRoute
   TvTvIdRoute: typeof TvTvIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/shows': {
+      id: '/shows'
+      path: '/shows'
+      fullPath: '/shows'
+      preLoaderRoute: typeof ShowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -123,6 +153,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
+  ShowsRoute: ShowsRoute,
   MovieMovieIdRoute: MovieMovieIdRoute,
   TvTvIdRoute: TvTvIdRoute,
 }
