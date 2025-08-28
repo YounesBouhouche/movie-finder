@@ -6,6 +6,10 @@ interface CardProps {
 }
 
 export const MovieCard = ({movie, onClick}: CardProps) => {
+  const handleFullDetails = () => {
+    window.location.href = `/movie/${movie.id}`;
+  };
+
   return (
     <div key={movie.id} className="group relative bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 hover:scale-105 border border-gray-800 hover:border-purple-500/50">
       <div className="relative overflow-hidden">
@@ -50,9 +54,17 @@ export const MovieCard = ({movie, onClick}: CardProps) => {
               <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
               <span>{new Date(movie.release_date).getFullYear()}</span>
             </div>
-            <button onClick={onClick} className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer">
-              View Details
-            </button>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <button onClick={onClick} className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer text-sm">
+                Quick View
+              </button>
+              <button
+                onClick={handleFullDetails}
+                className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300 text-sm"
+              >
+                Full Details
+              </button>
+            </div>
           </div>
         </div>
       </div>

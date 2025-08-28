@@ -48,7 +48,10 @@ export const Header = ({ searchQuery, setSearchQuery }: HeaderProps) => {
                 <span>Live</span>
               </div>
               <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-              <span>Powered by TMDB</span>
+              <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
+                <span className="font-body">Powered by</span>
+                <span className="font-semibold text-blue-400">TMDB</span>
+              </a>
               <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
               <span>Millions of Movies</span>
             </div>
