@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useEffect, useState } from 'react';
 import Spinner from '../components/Spinner';
+import useFetch from '../api/useFetch';
+import { useEffect } from 'react';
 
 // Extended Movie interface for detailed movie data
 interface DetailedMovie {
@@ -32,46 +33,12 @@ export const Route = createFileRoute('/movie/$movieId')({
   component: RouteComponent,
 })
 
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const API_OPTIONS = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${API_KEY}`
-  }
-}
-
 function RouteComponent() {
-  const [movie, setMovie] = useState<DetailedMovie | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { movieId } = Route.useParams()
-
-  const fetchMovie = async () => {
-    setIsLoading(true);
-    try {
-      const endpoint = `${API_BASE_URL}/movie/${movieId}`;
-      const response = await fetch(endpoint, API_OPTIONS);
-      if (!response.ok)
-        throw new Error('Failed to fetch movie');
-
-      const data = await response.json();
-      console.log(data);
-      setMovie(data);
-      setErrorMessage(null);
-    } catch (error) {
-      console.log(error);
-      setErrorMessage('Error fetching movie, please try again later');
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
+  const [movie, errorMessage, isLoading] = useFetch<DetailedMovie>(`/movie/${movieId}`);
   useEffect(() => {
-    fetchMovie();
-  }, [movieId]);
-
+    console.log(movie);
+  }, [movie])
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">

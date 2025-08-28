@@ -1,21 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MovieCard } from "../components/MovieCard";
+import { TvCard } from "../components/TvCard";
 import { Header } from "../components/Header";
 import MovieDialog from "../components/MovieDialog";
+import TvDialog from "../components/TvDialog";
 import Spinner from "../components/Spinner";
 import type { Movie } from "../types/Movie";
 import { useDebounce } from "react-use";
-
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const API_OPTIONS = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${API_KEY}`
-  }
-}
+import useFetch from '../api/useFetch';
+import type TV from '../types/Tv';
 
 export const Route = createFileRoute('/')({
   component: HomeComponent,
@@ -23,47 +17,27 @@ export const Route = createFileRoute('/')({
 
 function HomeComponent() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [errorMessage, setErrorMessage] = useState<string|null>(null);
-  const [movies, setMovies] = useState<Movie[]>([]);
   const [movie, setMovie] = useState<Movie|null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [tv, setTv] = useState<TV|null>(null);
   const [debouncedQuery, setDebouncedQuery] = useState('');
 
   useDebounce(() => {
     setDebouncedQuery(searchQuery);
   }, 500, [searchQuery]);
 
-  const fetchMovies = async (query: string) => {
-    setIsLoading(true);
-    try {
-      const endpoint = 
-        query ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
-          : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
-      const response = await fetch(endpoint, API_OPTIONS);
-      if (!response.ok)
-        throw new Error('Failed to fetch movies');
+  const moviesEndpoint = 
+    debouncedQuery ? `/search/movie?query=${encodeURIComponent(debouncedQuery)}`
+      : `/discover/movie?sort_by=popularity.desc`;
 
-      const data = await response.json();
-      if (data.Response === 'False') {
-        setErrorMessage(data.Error || 'Failed to fetch movies');
-        setMovies([]);
-        return;
-      }
-      console.log(data.results);
-      
-      setMovies(data.results || []);
+  const tvsEndpoint = 
+    debouncedQuery ? `/search/tv?query=${encodeURIComponent(debouncedQuery)}`
+      : `/discover/tv?sort_by=popularity.desc`;
 
-    } catch (error) {
-      console.log(error);
-      setErrorMessage('Error fetching movies, please try again later');
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  const [moviesList, moviesError, moviesLoading] = useFetch<Movie[]>(moviesEndpoint, (data) => data.results, [debouncedQuery]);
+  const movies = moviesList || [];
 
-  useEffect(() => {
-    fetchMovies(debouncedQuery);
-  }, [debouncedQuery]);
+  const [tvsList, tvsError, tvsLoading] = useFetch<TV[]>(tvsEndpoint, (data) => data.results, [debouncedQuery]);
+  const tvs = tvsList || [];
 
   return (
     <>
@@ -115,15 +89,15 @@ function HomeComponent() {
             </div>
           </div>
           
-          {isLoading ? (
+          {moviesLoading ? (
             <div className="flex justify-center items-center py-20">
               <Spinner />
             </div>
-          ) : errorMessage ? (
+          ) : moviesError ? (
             <div className="text-center py-20">
               <div className="bg-red-900/50 border border-red-700 rounded-xl p-8 max-w-md mx-auto">
                 <div className="text-red-400 text-lg font-semibold">
-                  {errorMessage}
+                  {moviesError}
                 </div>
               </div>
             </div>
@@ -135,8 +109,70 @@ function HomeComponent() {
             </div>
           )}
         </section>
+
+        {/* TV Shows Section */}
+        <section className="space-y-8 mt-16">
+          <div className="flex items-center justify-between bg-gray-900/30 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <h2 className="font-display text-4xl font-bold text-white flex items-center space-x-3">
+                  <span className="w-2 h-8 bg-gradient-to-b from-pink-500 to-rose-500 rounded-full"></span>
+                  <span>{searchQuery ? `TV Shows for "${searchQuery}"` : 'Popular TV Shows'}</span>
+                </h2>
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery('')}
+                    className="absolute -top-2 -right-2 w-6 h-6 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center text-xs text-gray-300 hover:text-white transition-all duration-200"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="text-gray-400 text-lg font-medium">
+                <span className="text-pink-400 font-bold">{tvs.length}</span> shows found
+              </div>
+              {/* Filter/sort options could go here */}
+              <div className="flex items-center space-x-2">
+                <button className="p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-200">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" />
+                  </svg>
+                </button>
+                <button className="p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-200">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          {tvsLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <Spinner />
+            </div>
+          ) : tvsError ? (
+            <div className="text-center py-20">
+              <div className="bg-red-900/50 border border-red-700 rounded-xl p-8 max-w-md mx-auto">
+                <div className="text-red-400 text-lg font-semibold">
+                  {tvsError}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
+              {tvs.map((element) => (
+                <TvCard key={element.id} tv={element} onClick={() => setTv(element)} />
+              ))}
+            </div>
+          )}
+        </section>
       </div>
       { movie && <MovieDialog movie={movie} onClose={() => setMovie(null)} />}
+      { tv && <TvDialog tv={tv} onClose={() => setTv(null)} />}
+
 
     </>
   );
