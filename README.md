@@ -62,8 +62,8 @@ A beautiful, modern movie discovery application built with React, TypeScript, an
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
-cd LearnReact
+git clone https://github.com/YounesBouhouche/movie-finder
+cd movie-finder
 ```
 
 ### 2. Install Dependencies
