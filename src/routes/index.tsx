@@ -6,7 +6,7 @@ import MovieDialog from "../components/MovieDialog";
 import Spinner from "../components/Spinner";
 import type { Movie } from "../types/Movie";
 import { useDebounce } from "react-use";
-import useFetch from '../api/useFetch';
+import useFetch from '../hooks/useFetch';
 
 export const Route = createFileRoute('/')({
   component: HomeComponent,

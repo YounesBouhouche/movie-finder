@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import Spinner from '../components/Spinner';
-import useFetch from '../api/useFetch';
+import useFetch from '../hooks/useFetch';
 import { useEffect } from 'react';
+import useQueryFetch from '../hooks/useQueryFetch';
 
 // Extended TV interface for detailed TV show data
 interface DetailedTV {
@@ -48,7 +49,7 @@ export const Route = createFileRoute('/tv/$tvId')({
 
 function RouteComponent() {
   const { tvId } = Route.useParams()
-  const [tv, errorMessage, isLoading] = useFetch<DetailedTV>(`/tv/${tvId}`);
+  const [tv, errorMessage, isLoading] = useQueryFetch<DetailedTV>(`/tv/${tvId}`, `tv-${tvId}`);
   
   useEffect(() => {
     console.log(tv);

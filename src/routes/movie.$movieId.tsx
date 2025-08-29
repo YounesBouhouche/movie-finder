@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import Spinner from '../components/Spinner';
-import useFetch from '../api/useFetch';
+import useFetch from '../hooks/useFetch';
 import { useEffect } from 'react';
+import useQueryFetch from '../hooks/useQueryFetch';
 
 // Extended Movie interface for detailed movie data
 interface DetailedMovie {
@@ -35,7 +36,7 @@ export const Route = createFileRoute('/movie/$movieId')({
 
 function RouteComponent() {
   const { movieId } = Route.useParams()
-  const [movie, errorMessage, isLoading] = useFetch<DetailedMovie>(`/movie/${movieId}`);
+  const [movie, errorMessage, isLoading] = useQueryFetch<DetailedMovie>(`/movie/${movieId}`, `movie-${movieId}`);
   useEffect(() => {
     console.log(movie);
   }, [movie])

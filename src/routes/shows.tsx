@@ -5,7 +5,7 @@ import { Header } from "../components/Header";
 import TvDialog from "../components/TvDialog";
 import Spinner from "../components/Spinner";
 import { useDebounce } from "react-use";
-import useFetch from '../api/useFetch';
+import useFetch from '../hooks/useFetch';
 import type TV from '../types/Tv';
 
 export const Route = createFileRoute('/shows')({
