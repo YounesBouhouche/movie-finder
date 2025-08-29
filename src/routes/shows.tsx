@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from "react";
 import { TvCard } from "../components/TvCard";
-import { Header } from "../components/Header";
+import { TvHeader } from "../components/TvHeader";
 import TvDialog from "../components/TvDialog";
 import Spinner from "../components/Spinner";
 import { useDebounce } from "react-use";
@@ -38,7 +38,7 @@ function RouteComponent() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-8">
-        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <TvHeader searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
         {/* TV Shows Section */}
         <section className="space-y-8">

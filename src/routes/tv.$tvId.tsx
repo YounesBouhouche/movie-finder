@@ -1,7 +1,12 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import Spinner from '../components/Spinner';
-import { useEffect } from 'react';
+import VideoSection from '../components/VideoSection';
+import SeasonsSection from '../components/SeasonsSection';
+import { useEffect, useState } from 'react';
 import useQueryFetch from '../hooks/useQueryFetch';
+import type Video from '../types/Video';
+import useFetch from '../hooks/useFetch';
+import type Season from '../types/Season';
 
 // Extended TV interface for detailed TV show data
 interface DetailedTV {
@@ -49,11 +54,18 @@ export const Route = createFileRoute('/tv/$tvId')({
 function RouteComponent() {
   const { tvId } = Route.useParams()
   const [tv, errorMessage, isLoading] = useQueryFetch<DetailedTV>(`/tv/${tvId}`, `tv-${tvId}`);
+  const [videos, videosErrorMessage, videosLoading] = useQueryFetch<Video[]>(`/tv/${tvId}/videos`, `tv-${tvId}-videos`, (data) => data.results || []);
+  const [selectedSeason, setSelectedSeason] = useState<number|null>(null)
+  const [season, seasonError, seasonLoading] = useFetch<Season>(`tv/${tvId}/season/${(selectedSeason || 0) + 1}`, undefined, [selectedSeason])
   
   useEffect(() => {
-    console.log(tv);
+    setSelectedSeason(0)
   }, [tv])
-  
+
+  useEffect(() => {
+    console.log(season);
+  }, [season])
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -342,41 +354,23 @@ function RouteComponent() {
           </div>
         </div>
 
+        {/* Videos Section */}
+        <VideoSection 
+          videos={videos || []}
+          videosLoading={videosLoading}
+          videosErrorMessage={videosErrorMessage}
+          tvName={tv.name}
+        />
+
         {/* Seasons Section */}
-        {tv.seasons && tv.seasons.length > 0 && (
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
-            <h2 className="font-display text-3xl font-bold text-white mb-8">Seasons</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {tv.seasons
-                .filter(season => season.season_number > 0) // Filter out specials
-                .map((season) => (
-                <div key={season.id} className="bg-gray-800/50 rounded-xl p-4 hover:bg-gray-800/70 transition-all duration-300">
-                  <img
-                    src={season.poster_path ? `https://images.tmdb.org/t/p/w300/${season.poster_path}` : 'https://via.placeholder.com/300x450/1f2937/9ca3af?text=No+Image'}
-                    alt={season.name}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <h3 className="font-display text-lg font-bold text-white mb-2">{season.name}</h3>
-                  <div className="space-y-1 text-sm">
-                    <p className="font-body text-gray-300">
-                      {season.episode_count} Episode{season.episode_count !== 1 ? 's' : ''}
-                    </p>
-                    {season.air_date && (
-                      <p className="font-body text-gray-400">
-                        {new Date(season.air_date).getFullYear()}
-                      </p>
-                    )}
-                  </div>
-                  {season.overview && (
-                    <p className="font-body text-gray-400 text-xs mt-2 line-clamp-3">
-                      {season.overview}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <SeasonsSection
+          seasons={tv.seasons}
+          selectedSeason={selectedSeason}
+          setSelectedSeason={setSelectedSeason}
+          season={season}
+          seasonLoading={seasonLoading}
+          seasonError={seasonError}
+        />
       </div>
     </div>
   );

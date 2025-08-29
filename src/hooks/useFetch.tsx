@@ -18,6 +18,7 @@ export default function useFetch<T>(
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string|null>(null);
 
+  
   const fetching = async () => {
     setIsLoading(true);
     try {

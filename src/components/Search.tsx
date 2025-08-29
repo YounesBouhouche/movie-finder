@@ -1,9 +1,10 @@
 interface SearchProps {
   searchQuery: string,
-  setSearchQuery: (query: string) => void
+  setSearchQuery: (query: string) => void,
+  placeholder?: string
 }
 
-export const Search = ({searchQuery, setSearchQuery}: SearchProps) => {
+export const Search = ({searchQuery, setSearchQuery, placeholder}: SearchProps) => {
   return (
     <div className="relative max-w-2xl mx-auto">
       <div className="relative group">
@@ -19,7 +20,7 @@ export const Search = ({searchQuery, setSearchQuery}: SearchProps) => {
               type="text"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Search for movies..."
+              placeholder={placeholder || "Search for movies..."}
               className="font-body flex-1 bg-transparent text-white placeholder-gray-400 text-lg outline-none focus:placeholder-gray-500 transition-colors duration-300"
             />
             {searchQuery && (
