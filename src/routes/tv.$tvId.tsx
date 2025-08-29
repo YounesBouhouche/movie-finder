@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import Spinner from '../components/Spinner';
-import useFetch from '../hooks/useFetch';
 import { useEffect } from 'react';
 import useQueryFetch from '../hooks/useQueryFetch';
 
