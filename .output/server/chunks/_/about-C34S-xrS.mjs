@@ -1,0 +1,116 @@
+import { jsxs, jsx } from 'react/jsx-runtime';
+
+function AboutComponent() {
+  return /* @__PURE__ */ jsxs("div", { className: "relative min-h-screen", children: [
+    /* @__PURE__ */ jsxs("div", { className: "fixed inset-0 overflow-hidden pointer-events-none", children: [
+      /* @__PURE__ */ jsx("div", { className: "absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" }),
+      /* @__PURE__ */ jsx("div", { className: "absolute -bottom-40 -left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" }),
+      /* @__PURE__ */ jsx("div", { className: "absolute top-40 left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "relative z-10 container mx-auto px-4 py-16", children: [
+      /* @__PURE__ */ jsx("section", { className: "text-center space-y-8 mb-20", children: /* @__PURE__ */ jsxs("div", { className: "space-y-6", children: [
+        /* @__PURE__ */ jsxs("h1", { className: "font-display text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 animate-gradient-x leading-tight", children: [
+          "About ",
+          /* @__PURE__ */ jsx("span", { className: "text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400", children: "MovieFinder" })
+        ] }),
+        /* @__PURE__ */ jsx("p", { className: "font-body text-2xl md:text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed", children: "Discover movies like never before with our beautiful, intuitive platform" })
+      ] }) }),
+      /* @__PURE__ */ jsx("section", { className: "mb-20", children: /* @__PURE__ */ jsx("div", { className: "bg-gray-900/30 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-gray-800", children: /* @__PURE__ */ jsxs("div", { className: "grid md:grid-cols-2 gap-12 items-center", children: [
+        /* @__PURE__ */ jsxs("div", { className: "space-y-6", children: [
+          /* @__PURE__ */ jsxs("h2", { className: "font-display text-4xl font-bold text-white flex items-center space-x-3", children: [
+            /* @__PURE__ */ jsx("span", { className: "w-2 h-12 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full" }),
+            /* @__PURE__ */ jsx("span", { children: "Our Mission" })
+          ] }),
+          /* @__PURE__ */ jsx("p", { className: "font-body text-lg text-gray-300 leading-relaxed", children: "MovieFinder was created with a simple goal: to make movie discovery effortless and enjoyable. We believe that finding your next favorite film shouldn't be a chore\u2014it should be an exciting journey." }),
+          /* @__PURE__ */ jsx("p", { className: "font-body text-lg text-gray-300 leading-relaxed", children: "By combining beautiful design with powerful search capabilities, we've created a platform that celebrates cinema while making it accessible to everyone." })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "relative", children: /* @__PURE__ */ jsx("div", { className: "bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-2xl p-8 backdrop-blur-sm border border-purple-500/30", children: /* @__PURE__ */ jsxs("div", { className: "text-center space-y-4", children: [
+          /* @__PURE__ */ jsx("div", { className: "w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto", children: /* @__PURE__ */ jsx("svg", { className: "w-8 h-8 text-white", fill: "currentColor", viewBox: "0 0 20 20", children: /* @__PURE__ */ jsx("path", { d: "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" }) }) }),
+          /* @__PURE__ */ jsx("h3", { className: "font-display text-2xl font-bold text-white", children: "Quality First" }),
+          /* @__PURE__ */ jsx("p", { className: "font-body text-gray-300", children: "Every feature is crafted with attention to detail and user experience." })
+        ] }) }) })
+      ] }) }) }),
+      /* @__PURE__ */ jsxs("section", { className: "mb-20", children: [
+        /* @__PURE__ */ jsxs("div", { className: "text-center mb-12", children: [
+          /* @__PURE__ */ jsx("h2", { className: "font-display text-4xl md:text-5xl font-bold text-white mb-4", children: "Why Choose MovieFinder?" }),
+          /* @__PURE__ */ jsx("p", { className: "font-body text-xl text-gray-300 max-w-2xl mx-auto", children: "We've built more than just another movie app\u2014we've created an experience" })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8", children: [{
+          icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+          title: "Smart Search",
+          description: "Find movies instantly with our intelligent search that understands what you're looking for."
+        }, {
+          icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+          title: "Beautiful Design",
+          description: "Every pixel is crafted to create a visually stunning and intuitive movie browsing experience."
+        }, {
+          icon: "M13 10V3L4 14h7v7l9-11h-7z",
+          title: "Lightning Fast",
+          description: "Built with modern tech for blazing-fast performance and smooth interactions."
+        }, {
+          icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+          title: "Smart Recommendations",
+          description: "Discover new favorites with our curated selections and trending movies."
+        }, {
+          icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+          title: "Mobile Optimized",
+          description: "Perfect experience across all devices, from desktop to mobile phones."
+        }, {
+          icon: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z",
+          title: "Dark Mode",
+          description: "Easy on the eyes with our beautiful dark theme designed for extended browsing."
+        }].map((feature, index) => /* @__PURE__ */ jsx("div", { className: "group bg-gray-900/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105", children: /* @__PURE__ */ jsxs("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsx("div", { className: "w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300", children: /* @__PURE__ */ jsx("svg", { className: "w-6 h-6 text-white", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: feature.icon }) }) }),
+          /* @__PURE__ */ jsx("h3", { className: "font-display text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300", children: feature.title }),
+          /* @__PURE__ */ jsx("p", { className: "font-body text-gray-300 leading-relaxed", children: feature.description })
+        ] }) }, index)) })
+      ] }),
+      /* @__PURE__ */ jsx("section", { className: "mb-20", children: /* @__PURE__ */ jsxs("div", { className: "bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-3xl p-8 md:p-12 border border-purple-500/20", children: [
+        /* @__PURE__ */ jsxs("div", { className: "text-center mb-12", children: [
+          /* @__PURE__ */ jsx("h2", { className: "font-display text-4xl font-bold text-white mb-4", children: "Built with Modern Technology" }),
+          /* @__PURE__ */ jsx("p", { className: "font-body text-xl text-gray-300 max-w-2xl mx-auto", children: "We use cutting-edge tools to deliver the best possible experience" })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-8", children: [{
+          name: "React",
+          description: "Modern UI framework",
+          icon: "/react.svg"
+        }, {
+          name: "TypeScript",
+          description: "Type-safe development",
+          icon: "/typescript.svg"
+        }, {
+          name: "Tailwind CSS",
+          description: "Utility-first styling",
+          icon: "/tailwind.svg"
+        }, {
+          name: "TMDB API",
+          description: "Movie data source",
+          icon: "/tmdb.svg"
+        }].map((tech, index) => /* @__PURE__ */ jsxs("div", { className: "text-center space-y-3 group", children: [
+          /* @__PURE__ */ jsx("div", { className: "w-16 h-16 flex items-center justify-center mx-auto group-hover:scale-125 transition-all duration-300", children: /* @__PURE__ */ jsx("img", { src: tech.icon }) }),
+          /* @__PURE__ */ jsxs("div", { children: [
+            /* @__PURE__ */ jsx("h3", { className: "font-display text-lg font-bold text-white", children: tech.name }),
+            /* @__PURE__ */ jsx("p", { className: "font-body text-sm text-gray-400", children: tech.description })
+          ] })
+        ] }, index)) })
+      ] }) }),
+      /* @__PURE__ */ jsx("section", { className: "text-center", children: /* @__PURE__ */ jsx("div", { className: "bg-gray-900/50 backdrop-blur-sm rounded-3xl p-12 border border-gray-800", children: /* @__PURE__ */ jsxs("div", { className: "space-y-6", children: [
+        /* @__PURE__ */ jsx("h2", { className: "font-display text-4xl md:text-5xl font-bold text-white", children: "Ready to Discover Your Next Favorite Movie?" }),
+        /* @__PURE__ */ jsx("p", { className: "font-body text-xl text-gray-300 max-w-2xl mx-auto", children: "Join thousands of movie lovers who've already discovered their new favorites with MovieFinder." }),
+        /* @__PURE__ */ jsxs("div", { className: "flex flex-col sm:flex-row gap-4 justify-center items-center", children: [
+          /* @__PURE__ */ jsxs("a", { href: "/", className: "inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg space-x-2", children: [
+            /* @__PURE__ */ jsx("svg", { className: "w-5 h-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }) }),
+            /* @__PURE__ */ jsx("span", { children: "Start Exploring Movies" })
+          ] }),
+          /* @__PURE__ */ jsxs("a", { href: "https://github.com/YounesBouhouche/movie-finder", target: "_blank", rel: "noopener noreferrer", className: "inline-flex items-center px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-xl transition-all duration-300 space-x-2", children: [
+            /* @__PURE__ */ jsx("svg", { className: "w-5 h-5", fill: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ jsx("path", { d: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" }) }),
+            /* @__PURE__ */ jsx("span", { children: "View on GitHub" })
+          ] })
+        ] })
+      ] }) }) })
+    ] })
+  ] });
+}
+
+export { AboutComponent as component };
+//# sourceMappingURL=about-C34S-xrS.mjs.map
