@@ -1,3 +1,4 @@
+import { useRouter } from "@tanstack/react-router";
 import type { Movie } from "../types/Movie";
 
 interface CardProps {
@@ -6,8 +7,12 @@ interface CardProps {
 }
 
 export const MovieCard = ({movie, onClick}: CardProps) => {
+  const router = useRouter();
   const handleFullDetails = () => {
-    window.location.href = `/movie/${movie.id}`;
+    router.navigate({
+      to: "/movie/$movieId",
+      params: { movieId: movie.id.toString() },
+    });
   };
 
   return (

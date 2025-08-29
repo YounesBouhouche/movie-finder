@@ -3,6 +3,7 @@ import { Footer } from "./components/Footer";
 import { NavBar } from "./components/NavBar";
 // import the global css file
 import './index.css';
+import './app.css';
 
 interface AppProps {
   children: React.ReactNode;

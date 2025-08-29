@@ -1,3 +1,4 @@
+import { useRouter } from "@tanstack/react-router";
 import type TV from "../types/Tv";
 
 interface TvCardProps {
@@ -6,8 +7,12 @@ interface TvCardProps {
 }
 
 export const TvCard = ({ tv, onClick }: TvCardProps) => {
+  const router = useRouter();
   const handleFullDetails = () => {
-    window.location.href = `/tv/${tv.id}`;
+    router.navigate({
+      to: "/tv/$tvId",
+      params: { tvId: tv.id.toString() },
+    });
   };
 
   return (
