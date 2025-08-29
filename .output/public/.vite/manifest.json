@@ -1,0 +1,102 @@
+{
+  "../../../~start/default-client-entry.tsx": {
+    "file": "assets/main-BmtFx7vC.js",
+    "name": "main",
+    "src": "../../../~start/default-client-entry.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/routes/shows.tsx?tsr-split=component",
+      "src/routes/about.tsx?tsr-split=component",
+      "src/routes/$splat.tsx?tsr-split=component",
+      "src/routes/index.tsx?tsr-split=component",
+      "src/routes/tv.$tvId.tsx?tsr-split=component",
+      "src/routes/movie.$movieId.tsx?tsr-split=component"
+    ],
+    "css": [
+      "assets/main-DKQd0Cb_.css"
+    ]
+  },
+  "_Spinner-DCjL5b66.js": {
+    "file": "assets/Spinner-DCjL5b66.js",
+    "name": "Spinner",
+    "imports": [
+      "../../../~start/default-client-entry.tsx"
+    ]
+  },
+  "_useFetch-CQ-Ev511.js": {
+    "file": "assets/useFetch-CQ-Ev511.js",
+    "name": "useFetch",
+    "imports": [
+      "../../../~start/default-client-entry.tsx"
+    ]
+  },
+  "_useQueryFetch-BRs7hLWt.js": {
+    "file": "assets/useQueryFetch-BRs7hLWt.js",
+    "name": "useQueryFetch",
+    "imports": [
+      "../../../~start/default-client-entry.tsx"
+    ]
+  },
+  "src/routes/$splat.tsx?tsr-split=component": {
+    "file": "assets/_splat-Oecfqa8V.js",
+    "name": "_splat",
+    "src": "src/routes/$splat.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../~start/default-client-entry.tsx"
+    ]
+  },
+  "src/routes/about.tsx?tsr-split=component": {
+    "file": "assets/about-H3cXhd8l.js",
+    "name": "about",
+    "src": "src/routes/about.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../~start/default-client-entry.tsx"
+    ]
+  },
+  "src/routes/index.tsx?tsr-split=component": {
+    "file": "assets/index-BA80oToK.js",
+    "name": "index",
+    "src": "src/routes/index.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../~start/default-client-entry.tsx",
+      "_useFetch-CQ-Ev511.js",
+      "_Spinner-DCjL5b66.js"
+    ]
+  },
+  "src/routes/movie.$movieId.tsx?tsr-split=component": {
+    "file": "assets/movie._movieId-CnWkzdEE.js",
+    "name": "movie._movieId",
+    "src": "src/routes/movie.$movieId.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../~start/default-client-entry.tsx",
+      "_Spinner-DCjL5b66.js",
+      "_useQueryFetch-BRs7hLWt.js"
+    ]
+  },
+  "src/routes/shows.tsx?tsr-split=component": {
+    "file": "assets/shows-zREi7AR9.js",
+    "name": "shows",
+    "src": "src/routes/shows.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../~start/default-client-entry.tsx",
+      "_useFetch-CQ-Ev511.js",
+      "_Spinner-DCjL5b66.js"
+    ]
+  },
+  "src/routes/tv.$tvId.tsx?tsr-split=component": {
+    "file": "assets/tv._tvId-BgPnj7c9.js",
+    "name": "tv._tvId",
+    "src": "src/routes/tv.$tvId.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../~start/default-client-entry.tsx",
+      "_Spinner-DCjL5b66.js",
+      "_useQueryFetch-BRs7hLWt.js"
+    ]
+  }
+}
