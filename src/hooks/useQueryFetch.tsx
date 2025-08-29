@@ -37,10 +37,5 @@ export default function useQueryFetch<T>(
     },
   });
 
-  useEffect(() => {
-    console.log("Loading: " + isFetching);
-  }, [isFetching]);
-  
-
   return [ data || defaultValue || null, errorMessage, isFetching ];
 }
