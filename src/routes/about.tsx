@@ -1,8 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import reactLogo from '../assets/react.svg'
-import typeScriptLogo from '../assets/typescript.svg'
-import tailwindLogo from '../assets/tailwind.svg'
-import tmdbLogo from '../assets/tmdb.svg'
 
 export const Route = createFileRoute('/about')({
   component: AboutComponent,
@@ -143,10 +139,10 @@ function AboutComponent() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { name: "React", description: "Modern UI framework", icon: reactLogo },
-                { name: "TypeScript", description: "Type-safe development", icon: typeScriptLogo },
-                { name: "Tailwind CSS", description: "Utility-first styling", icon: tailwindLogo },
-                { name: "TMDB API", description: "Movie data source", icon: tmdbLogo }
+                { name: "React", description: "Modern UI framework", icon: "/react.svg" },
+                { name: "TypeScript", description: "Type-safe development", icon: "/typescript.svg" },
+                { name: "Tailwind CSS", description: "Utility-first styling", icon: "/tailwind.svg" },
+                { name: "TMDB API", description: "Movie data source", icon: "/tmdb.svg" }
               ].map((tech, index) => (
                 <div key={index} className="text-center space-y-3 group">
                   <div className="w-16 h-16 flex items-center justify-center mx-auto group-hover:scale-125 transition-all duration-300">
