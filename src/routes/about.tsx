@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import reactLogo from '../assets/react.svg'
-import typeScriptLogo from '../assets/typeScript.svg'
+import typeScriptLogo from '../assets/typescript.svg'
 import tailwindLogo from '../assets/tailwind.svg'
 import tmdbLogo from '../assets/tmdb.svg'
 
