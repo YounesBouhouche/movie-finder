@@ -38,9 +38,9 @@ export default function SeasonsSection({
   return (
     <>
       {/* Seasons Grid */}
-      <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
-        <h2 className="font-display text-3xl font-bold text-white mb-8">Seasons</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-800">
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">Seasons</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
           {validSeasons.map((seasonItem, index) => (
             <SeasonCard
               key={seasonItem.id}

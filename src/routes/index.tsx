@@ -40,13 +40,13 @@ function HomeComponent() {
       <div className="relative z-10 container mx-auto px-4 py-8">
         <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-        <section className="space-y-8">
-          <div className="flex items-center justify-between bg-gray-900/30 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-            <div className="flex items-center space-x-4">
+        <section className="space-y-6 sm:space-y-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-gray-900/30 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-800 gap-4 sm:gap-0">
+            <div className="flex items-center space-x-3 sm:space-x-4">
               <div className="relative">
-                <h2 className="font-display text-4xl font-bold text-white flex items-center space-x-3">
-                  <span className="w-2 h-8 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
-                  <span>{searchQuery ? `Results for "${searchQuery}"` : 'Trending Movies'}</span>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white flex items-center space-x-2 sm:space-x-3">
+                  <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
+                  <span className="line-clamp-1">{searchQuery ? `Results for "${searchQuery}"` : 'Trending Movies'}</span>
                 </h2>
                 {searchQuery && (
                   <button 
@@ -79,19 +79,19 @@ function HomeComponent() {
           </div>
           
           {moviesLoading ? (
-            <div className="flex justify-center items-center py-20">
+            <div className="flex justify-center items-center py-16 sm:py-20">
               <Spinner />
             </div>
           ) : moviesError ? (
-            <div className="text-center py-20">
-              <div className="bg-red-900/50 border border-red-700 rounded-xl p-8 max-w-md mx-auto">
-                <div className="text-red-400 text-lg font-semibold">
+            <div className="text-center py-16 sm:py-20">
+              <div className="bg-red-900/50 border border-red-700 rounded-lg sm:rounded-xl p-6 sm:p-8 max-w-md mx-auto">
+                <div className="text-red-400 text-base sm:text-lg font-semibold">
                   {moviesError}
                 </div>
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 lg:gap-6 xl:gap-8">
               {movies.map((element) => (
                 <MovieCard key={element.id} movie={element} onClick={() => setMovie(element)} />
               ))}

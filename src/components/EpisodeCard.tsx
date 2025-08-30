@@ -6,23 +6,23 @@ interface EpisodeCardProps {
 
 export default function EpisodeCard({ episode }: EpisodeCardProps) {
   return (
-    <div className="bg-gray-800/50 rounded-xl p-6 hover:bg-gray-800/70 transition-all duration-300">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+    <div className="bg-gray-800/50 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-6 hover:bg-gray-800/70 transition-all duration-300">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
         {/* Episode Still */}
         <div className="lg:col-span-1">
-          <div className="relative aspect-video overflow-hidden rounded-lg">
+          <div className="relative aspect-video overflow-hidden rounded-md sm:rounded-lg">
             <img
               src={episode.still_path ? `https://images.tmdb.org/t/p/w300/${episode.still_path}` : 'https://via.placeholder.com/300x169/1f2937/9ca3af?text=No+Image'}
               alt={episode.name}
               className="w-full h-full object-cover"
             />
             {/* Episode Number Badge */}
-            <div className="absolute top-2 left-2 bg-pink-600 text-white px-2 py-1 rounded-full text-xs font-bold">
+            <div className="absolute top-1 left-1 sm:top-2 sm:left-2 bg-pink-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold">
               EP {episode.episode_number}
             </div>
             {/* Rating Badge */}
             {episode.vote_average > 0 && (
-              <div className="absolute top-2 right-2 bg-yellow-300 text-black px-2 py-1 rounded-full text-xs font-bold">
+              <div className="absolute top-1 right-1 sm:top-2 sm:right-2 bg-yellow-300 text-black px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold">
                 ⭐ {episode.vote_average.toFixed(1)}
               </div>
             )}
@@ -30,12 +30,12 @@ export default function EpisodeCard({ episode }: EpisodeCardProps) {
         </div>
 
         {/* Episode Details */}
-        <div className="lg:col-span-3 space-y-3">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-2">
-            <h4 className="font-display text-xl font-bold text-white">
+        <div className="lg:col-span-3 space-y-2 sm:space-y-3">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-1 sm:gap-2">
+            <h4 className="font-display text-lg sm:text-xl font-bold text-white">
               {episode.episode_number}. {episode.name}
             </h4>
-            <div className="flex items-center space-x-4 text-sm text-gray-400">
+            <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-400">
               {episode.air_date && (
                 <span>{new Date(episode.air_date).toLocaleDateString()}</span>
               )}
@@ -46,7 +46,7 @@ export default function EpisodeCard({ episode }: EpisodeCardProps) {
           </div>
 
           {episode.overview && (
-            <p className="font-body text-gray-300 leading-relaxed">
+            <p className="font-body text-gray-300 leading-relaxed text-sm sm:text-base">
               {episode.overview}
             </p>
           )}

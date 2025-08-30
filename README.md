@@ -68,9 +68,6 @@ A beautiful, modern movie and TV show discovery application built with React, Ty
   "tailwindcss": "^4.1.12",
   "@tailwindcss/vite": "^4.1.12"
 }
-  "tailwindcss": "^4.1.12",
-  "@tailwindcss/vite": "^4.1.12"
-}
 ```
 
 ## 🛠️ Installation & Setup
